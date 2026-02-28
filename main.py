@@ -35,8 +35,8 @@ data_teacher = pd.DataFrame({
 
 
 
-# --- 图1：学生焦虑得分对比（柱状图）---
-plt.figure(figsize=(10, 6))
+
+plt.figure(figsize=(6, 6))
 sns.barplot(x='学段', y='焦虑得分均值', hue='组别', data=data_anxiety, palette='viridis')
 plt.title('图1 正常开学与提前开学学生焦虑得分均值对比', fontsize=14, fontweight='bold')
 plt.ylabel('焦虑自评量表(SAS)得分', fontsize=12)
@@ -46,8 +46,8 @@ plt.tight_layout()
 plt.savefig('图1_学生焦虑对比.png', dpi=300)  # 保存高清图
 plt.show()
 
-# --- 图2：学生睡眠时长变化（折线图）---
-plt.figure(figsize=(10, 6))
+
+plt.figure(figsize=(8, 6))
 sns.lineplot(x='时间节点', y='日均睡眠时长(小时)', data=data_sleep, marker='o', linewidth=3, color='coral')
 plt.title('图2 学生日均睡眠时长变化趋势', fontsize=14, fontweight='bold')
 plt.ylabel('日均睡眠时长(小时)', fontsize=12)
@@ -57,23 +57,23 @@ plt.tight_layout()
 plt.savefig('图2_睡眠时长变化.png', dpi=300)
 plt.show()
 
-# --- 图3：不同家庭结构家长支持率（饼图）---
-plt.figure(figsize=(8, 8))
-colors = ['#66b3ff', '#99ff99', '#ffcc99']
-plt.pie(data_parents['支持率(%)'], labels=data_parents['家庭结构'], autopct='%1.1f%%',
-        colors=colors, startangle=90, textprops={'fontsize': 12})
-plt.title('图3 不同家庭结构对提前开学的支持率', fontsize=14, fontweight='bold')
-plt.tight_layout()
-plt.savefig('图3_家长支持率.png', dpi=300)
-plt.show()
-
-# --- 图4：教师职业倦怠得分对比（简单柱状图）---
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(6, 6))
 sns.barplot(x='组别', y='职业倦怠得分均值', data=data_teacher, palette='Set2')
-plt.title('图4 教师职业倦怠得分均值对比', fontsize=14, fontweight='bold')
+plt.title('图3 教师职业倦怠得分均值对比', fontsize=14, fontweight='bold')
 plt.ylabel('职业倦怠量表(MBI)得分', fontsize=12)
 plt.ylim(30, 75)
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
-plt.savefig('图4_教师职业倦怠.png', dpi=300)
+plt.savefig('图3_教师职业倦怠.png', dpi=300)
+plt.show()
+
+
+plt.figure(figsize=(6, 6))
+sns.barplot(x='家庭结构', y='支持率(%)', data=data_parents, palette='viridis')
+plt.title('图4 正常开学与提前开学学生焦虑得分均值对比', fontsize=14, fontweight='bold')
+plt.ylim(0, 100)  # 设置y轴范围，让差异更明显
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.title('图4 不同家庭结构对提前开学的支持率', fontsize=14, fontweight='bold')
+plt.tight_layout()
+plt.savefig('图4_家长支持率.png', dpi=300)
 plt.show()
